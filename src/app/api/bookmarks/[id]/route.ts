@@ -9,7 +9,8 @@ export async function DELETE(
   try {
     await pool.query('DELETE FROM bookmarks WHERE id = ?', [params.id]);
     return NextResponse.json({ message: 'Bookmark deleted' });
-  } catch (error) {
+  }  catch (error) {
+    console.error('Error deleting bookmark:', error);
     return NextResponse.json({ error: 'Failed to delete bookmark' }, { status: 500 });
   }
 }
